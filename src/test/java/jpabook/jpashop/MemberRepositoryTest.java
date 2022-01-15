@@ -12,6 +12,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import jpabook.jpashop.domain.Member;
+
 @WebAppConfiguration
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
