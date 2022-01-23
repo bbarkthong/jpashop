@@ -9,12 +9,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
     @Id
@@ -32,5 +35,23 @@ public class OrderItem {
 
     private int orderPrice;
     private int orderQuantity;
+
+    public void cancel() {
+        getItem().addStock(orderQuantity);
+    }
+
+    public int getTotalPrice() {
+        return getOrderPrice() * orderQuantity;
+    }
+
+    public static OrderItem creatOrderItem(Item item, int orderPrice, int orderQuantity) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setOrderQuantity(orderQuantity);
+
+        item.removeStock(orderQuantity);
+        return orderItem;
+    }
 
 }
