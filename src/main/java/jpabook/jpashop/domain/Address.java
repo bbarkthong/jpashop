@@ -3,14 +3,15 @@ package jpabook.jpashop.domain;
 import javax.persistence.Embeddable;
 
 import lombok.Getter;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 
-@Builder
 @Getter
+@AllArgsConstructor
 @Embeddable
 public class Address {
 
     private String city;
     private String street;
     private String zipcode;
+
 }

@@ -22,11 +22,11 @@ public class MemberServiceTest {
     // @Autowired EntityManager em;
 
     @Test
-    // @Rollback(false)
     public void 회원가입() throws Exception {
         // given
         Member member = new Member();
         member.setName("kim");
+        // member.setAddress(new Address("서울", "강가", "123-123"));
 
         // when
         Long savedId = memberService.join(member);
